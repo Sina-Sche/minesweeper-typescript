@@ -1,3 +1,8 @@
+# About this Repo
+
+I am following a tutorial by Justin Kim, using React, TypeScript and SCSS
+-> currently at 38 mins of 1st video: https://www.youtube.com/watch?v=hg41egLtM9o
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
