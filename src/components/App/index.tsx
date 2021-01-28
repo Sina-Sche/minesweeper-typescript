@@ -5,7 +5,7 @@ import NumberDisplay from "../NumberDisplay";
 import "./App.scss";
 
 const App: FC = () => {
-  const [cells, setCells] = useState(generateCells());
+  const [cells] = useState(generateCells());
 
   const renderButtons = (): ReactNode => {
     return cells.map((row, rowIndex) =>
