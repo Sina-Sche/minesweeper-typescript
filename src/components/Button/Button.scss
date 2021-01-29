@@ -2,6 +2,13 @@
 
 .Button {
   @include borders;
+  @include buttons;
   width: 30px;
   height: 30px;
+  &:active {
+    border-bottom-color: white;
+    border-left-color: #7b7b7b;
+    border-top-color: #7b7b7b;
+    border-right-color: white;
+  }
 }
