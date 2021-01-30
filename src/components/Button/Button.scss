@@ -5,10 +5,13 @@
   @include buttons;
   width: 30px;
   height: 30px;
-  &:active {
-    border-bottom-color: white;
-    border-left-color: #7b7b7b;
-    border-top-color: #7b7b7b;
-    border-right-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    font-size: 20px;
+  }
+  &.visible {
+    border: 1px solid #7b7b7b;
   }
 }
