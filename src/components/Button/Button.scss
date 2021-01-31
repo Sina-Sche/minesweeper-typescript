@@ -8,10 +8,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
   span {
     font-size: 20px;
   }
   &.visible {
     border: 1px solid #7b7b7b;
+  }
+  &.value-1 {
+    color: blue;
+  }
+  &.value-2 {
+    color: green;
+  }
+  &.value-3 {
+    color: red;
+  }
+  &.value-4 {
+    color: purple;
+  }
+  &.value-5 {
+    color: maroon;
+  }
+  &.value-6 {
+    color: turquoise;
+  }
+  &.value-8 {
+    color: gray;
   }
 }
