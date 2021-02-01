@@ -1,7 +1,7 @@
 import { FC, ReactNode, useEffect, useState } from "react";
 import { NO_OF_BOMBS } from "../../constants";
-import { Cell, CellState, Face } from "../../types";
-import { generateCells } from "../../utils";
+import { Cell, CellState, CellValue, Face } from "../../types";
+import { generateCells, openMultipleCells } from "../../utils";
 import Button from "../Button";
 import NumberDisplay from "../NumberDisplay";
 import "./App.scss";
@@ -43,7 +43,27 @@ const App: FC = () => {
   const handleCellClick = (rowParam: number, colParam: number) => (): void => {
     //start the game
     if (!isPlaying) {
+      // Make sure you can not click on a bomb in the beginning!
       setIsPlaying(true);
+    }
+    const currentCell = cells[rowParam][colParam];
+    let newCells = cells.slice();
+
+    if (
+      currentCell.state === CellState.flagged ||
+      currentCell.state === CellState.visible
+    ) {
+      return;
+    }
+
+    if (currentCell.value === CellValue.bomb) {
+      //TODO: take care of bomb click
+    } else if (currentCell.value === CellValue.none) {
+      newCells = openMultipleCells(newCells, rowParam, colParam);
+      setCells(newCells);
+    } else {
+      newCells[rowParam][colParam].state = CellState.visible;
+      setCells(newCells);
     }
   };
 
