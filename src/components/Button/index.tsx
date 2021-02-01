@@ -7,8 +7,17 @@ interface ButtonProps {
   col: number;
   state: CellState;
   value: CellValue;
+  onClick(rowParam: number, colParam: number): (...args: any[]) => void;
+  onRightClick(rowParam: number, colParam: number): (...args: any[]) => void;
 }
-const Button: FC<ButtonProps> = ({ row, col, state, value }) => {
+const Button: FC<ButtonProps> = ({
+  row,
+  col,
+  state,
+  value,
+  onClick,
+  onRightClick,
+}) => {
   const renderContent = (): ReactNode => {
     if (state === CellState.visible) {
       if (value === CellValue.bomb) {
@@ -34,6 +43,8 @@ const Button: FC<ButtonProps> = ({ row, col, state, value }) => {
       className={`Button ${
         state === CellState.visible ? "visible" : ""
       } value-${value}`}
+      onClick={onClick(row, col)}
+      onContextMenu={onRightClick(row, col)}
     >
       {renderContent()}
     </div>
