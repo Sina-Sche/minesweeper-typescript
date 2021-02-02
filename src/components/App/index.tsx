@@ -12,6 +12,8 @@ const App: FC = () => {
   const [time, setTime] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [bombCounter, setBombCounter] = useState<number>(NO_OF_BOMBS);
+  const [lost, setLost] = useState<boolean>(false);
+  const [win, setWin] = useState<boolean>(false);
 
   useEffect(() => {
     const handleMouseDown = (): void => {
@@ -57,7 +59,12 @@ const App: FC = () => {
     }
 
     if (currentCell.value === CellValue.bomb) {
-      //TODO: take care of bomb click
+      setFace(Face.lost);
+      setIsPlaying(false);
+      setLost(true);
+      newCells[rowParam][colParam].lost = true;
+      newCells = showAllBombs();
+      setCells(newCells);
     } else if (currentCell.value === CellValue.none) {
       newCells = openMultipleCells(newCells, rowParam, colParam);
       setCells(newCells);
@@ -96,6 +103,8 @@ const App: FC = () => {
     setTime(0);
     setCells(generateCells());
     setBombCounter(NO_OF_BOMBS);
+    setLost(false);
+    setWin(false);
   };
 
   const renderButtons = (): ReactNode => {
@@ -109,8 +118,24 @@ const App: FC = () => {
           row={rowIndex}
           col={colIndex}
           onRightClick={handleRightClick}
+          lost={cell.lost}
         />
       ))
+    );
+  };
+
+  const showAllBombs = (): Cell[][] => {
+    const currentCells = cells.slice();
+    return currentCells.map((row) =>
+      row.map((cell) => {
+        if (cell.value === CellValue.bomb) {
+          return {
+            ...cell,
+            state: CellState.visible,
+          };
+        }
+        return cell;
+      })
     );
   };
 

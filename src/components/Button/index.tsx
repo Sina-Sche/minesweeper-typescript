@@ -9,10 +9,12 @@ interface ButtonProps {
   value: CellValue;
   onClick(rowParam: number, colParam: number): (...args: any[]) => void;
   onRightClick(rowParam: number, colParam: number): (...args: any[]) => void;
+  lost?: boolean;
 }
 const Button: FC<ButtonProps> = ({
   row,
   col,
+  lost,
   state,
   value,
   onClick,
@@ -42,7 +44,7 @@ const Button: FC<ButtonProps> = ({
     <div
       className={`Button ${
         state === CellState.visible ? "visible" : ""
-      } value-${value}`}
+      } value-${value} ${lost ? "lost" : ""}`}
       onClick={onClick(row, col)}
       onContextMenu={onRightClick(row, col)}
     >
