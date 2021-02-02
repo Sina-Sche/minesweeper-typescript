@@ -13,7 +13,6 @@ const App: FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [bombCounter, setBombCounter] = useState<number>(NO_OF_BOMBS);
   const [lost, setLost] = useState<boolean>(false);
-  const [win, setWin] = useState<boolean>(false);
 
   useEffect(() => {
     const handleMouseDown = (): void => {
@@ -61,7 +60,7 @@ const App: FC = () => {
     if (currentCell.value === CellValue.bomb) {
       setFace(Face.lost);
       setIsPlaying(false);
-      setLost(true);
+      setLost(!lost);
       newCells[rowParam][colParam].lost = true;
       newCells = showAllBombs();
       setCells(newCells);
@@ -103,8 +102,7 @@ const App: FC = () => {
     setTime(0);
     setCells(generateCells());
     setBombCounter(NO_OF_BOMBS);
-    setLost(false);
-    setWin(false);
+    setLost(lost);
   };
 
   const renderButtons = (): ReactNode => {
