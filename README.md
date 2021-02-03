@@ -1,5 +1,5 @@
 # About this Repo
-In order to improve my TypeScript, SASS and React Skills I created this Minesweeper game following the tutorial by Justin Kim (https://www.youtube.com/watch?v=hg41egLtM9o).
+In order to improve my TypeScript, SCSS and React Skills I created this Minesweeper game following the tutorial by Justin Kim (https://www.youtube.com/watch?v=hg41egLtM9o).
 
 
 # Getting Started with Create React App
