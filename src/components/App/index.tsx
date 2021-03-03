@@ -2,6 +2,7 @@ import { FC, ReactNode, useEffect, useState } from "react";
 import { NO_OF_BOMBS } from "../../constants";
 import { Cell, CellState, CellValue, Face } from "../../types";
 import { generateCells, openMultipleCells } from "../../utils";
+import ThemeChanger from "../../utils/ThemeChanger";
 import Button from "../Button";
 import NumberDisplay from "../NumberDisplay";
 import "./App.scss";
@@ -138,15 +139,18 @@ const App: FC = () => {
   };
 
   return (
-    <div className="App">
-      <div className="Header">
-        <NumberDisplay value={bombCounter} />
-        <div className="Face" onClick={handleFaceClick}>
-          {face}
+    <div className="AppContainer">
+      <ThemeChanger />
+      <div className="App">
+        <div className="Header">
+          <NumberDisplay value={bombCounter} />
+          <div className="Face" onClick={handleFaceClick}>
+            {face}
+          </div>
+          <NumberDisplay value={time} />
         </div>
-        <NumberDisplay value={time} />
+        <div className="Body">{renderButtons()}</div>
       </div>
-      <div className="Body">{renderButtons()}</div>
     </div>
   );
 };

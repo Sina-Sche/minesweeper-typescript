@@ -1,3 +1,6 @@
+$bg-dark-mode: #333;
+$bg-light-mode: #fff;
+
 * {
   box-sizing: border-box;
 }
@@ -13,6 +16,14 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  transition-delay: 1s;
+  background: #fff;
+  transition-delay: 0.3s;
+}
+
+body.dark-mode {
+  background-color: #333;
+  transition-delay: 0.3s;
 }
 
 code {
