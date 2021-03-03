@@ -1,5 +1,12 @@
 @import "../../styles/index.scss";
 
+.AppContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--theme-page-background);
+  color: var(--theme-page-text);
+  height: 100vh;
+}
 .App {
   @include borders(white, #999);
   background: #c2c2c2;
@@ -32,4 +39,12 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+.ThemeButton {
+  font-size: 3rem;
+  margin: 20px auto;
+  color: khaki;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
