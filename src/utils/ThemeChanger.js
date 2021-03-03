@@ -5,17 +5,18 @@ const ThemeChanger = () => {
 
   const handleChange = () => {
     setTheme(!theme);
+  };
+  useEffect(() => {
     if (theme) {
       document.body.classList.add("dark-mode");
     } else {
       document.body.classList.remove("dark-mode");
     }
-  };
-  useEffect(() => {}, [theme]);
+  }, [theme]);
 
   return (
     <button className="ThemeButton" onClick={handleChange}>
-      {theme ? "🌙" : "☀"}
+      {theme ? "☀" : "🌙"}
     </button>
   );
 };
